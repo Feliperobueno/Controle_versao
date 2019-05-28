@@ -1,0 +1,88 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package appjava;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Aluno
+ */
+public class EXERCICIO_09 {
+    public static void main(String[] args) {
+    
+    Scanner entrada = new Scanner(System.in);
+       
+       String nomeLivro = "";
+       int quantidadeExemplares = 0;
+       String descricaoLivro = "";
+       float valorVendaLivro = 0;
+       float valorAluguelLivro = 0;
+       int quantidadeEstrelasAvaliacao = 0;
+       
+       int quantidadeDeLirvrosCadastrados = 0;
+       String valorComando = "";// Variavel de controle do laço de repetição
+       
+       while (!valorComando.equals("sair")){
+           System.out.println("---------------------Sistema Cadastrador------------------------------");
+           System.out.println("");
+           System.out.println("");
+           System.out.println("Para cadastrar o nome do livro digite 1");
+           System.out.println("Para cadastrar a quantidade de exemplares digite 2");
+           System.out.println("Para cadastrar a descrição digite 3");
+           System.out.println("Para cadastrar o valor de venda do livro digite 4");
+           System.out.println("Para cadastrar o valor de aluguel do livro digite 5");
+           System.out.println("Para cadastrar a quantidade de estrelas de avaliação do livro digite 6");
+           System.out.println("Para sair do cadastrador digite 'sair'");
+           valorComando = entrada.nextLine();
+           
+           System.out.println("");
+           
+           
+               if (valorComando.equals("1")){
+                       System.out.print("Digite o nome do livro: ");
+                       nomeLivro = entrada.nextLine();
+               }
+               if (valorComando.equals ("2")){
+                       System.out.print("Digite a quantida de exemplares: ");
+                       quantidadeExemplares = entrada.nextInt();
+                       }
+               if (valorComando.equals("3")){
+                       System.out.print("Digite a descrição do livro: ");
+                       descricaoLivro = entrada.nextLine();
+               }
+               if (valorComando.equals("4")){
+                       System.out.print("Digite o valor de venda do livro: ");
+                       valorVendaLivro = entrada.nextFloat();
+               }   
+               if (valorComando.equals("5")){
+                       System.out.print("Digite o valor do aluguel do livro: ");
+                       valorAluguelLivro = entrada.nextFloat();
+               }
+              if (valorComando.equals ("6")){
+                       System.out.print("Digite a quantidade de estrelas do livro: ");
+                       quantidadeEstrelasAvaliacao = entrada.nextInt();
+              }
+           }
+        
+       System.out.println("Livro cadastrado com sucesso.");
+       System.out.println("-------------------------------------------------------------------------------------------");
+       System.out.println("-------------------------------------------------------------------------------------------");
+       
+       
+       System.out.println("Nome do livro: " + nomeLivro);
+       System.out.println("Quantidade de exemplares: " + quantidadeExemplares);
+       System.out.println("Descrição do livro: " + descricaoLivro);
+       System.out.printf("Valor de venda: %.2f%n " , valorVendaLivro);
+       System.out.printf("Valor de aluguel: %.2f%n " , valorAluguelLivro);
+       System.out.println("Avaliação: " + quantidadeEstrelasAvaliacao + " estrelas");
+       
+       System.out.println("-------------------------------------------------------------------------------------------");
+       System.out.println("-------------------------------------------------------------------------------------------");
+       
+   }   
+
+       }

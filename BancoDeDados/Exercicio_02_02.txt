@@ -1,0 +1,28 @@
+create database Petilandia;
+
+create table Cliente (Nome_Cliente VARCHAR(30) NOT NULL, Cpf_Cliente VARCHAR(11) NOT NULL, Endereço VARCHAR(45), Email VARCHAR(20), C_Produto int not null, C_Pets int not null, 
+PRIMARY KEY (Cpf_Cliente),
+FOREIGN KEY (Cpf_Cliente) REFERENCES Cliente (Cpf_Cliente));
+
+create table Produto (Codigo_Produto int not null, Descrição VARCHAR(30), Tipo VARCHAR(20) not null, Preço float not null, 
+PRIMARY KEY(Codigo_Produto),
+FOREIGN KEY (Codigo_Produto) REFERENCES Produto(Codigo_Produto));
+
+create table Funcionarios(Cpf_Funcionario VARCHAR(11) not null, Nome_Funcionario VARCHAR(30) not null, Codigo_Funcionario int not null, 
+PRIMARY KEY (Codigo_Funcionario),
+FOREIGN KEY (Codigo_Funcionario) REFERENCES Funcionarios(Codigo_Funcionario));
+
+create table Atendimento(Codigo_Atendimento int not null, Descrição_Atendimento VARCHAR(30) not null, C_Cliente VARCHAR(11),
+PRIMARY KEY (Codigo_Atendimento),
+FOREIGN KEY (Codigo_Atendimento)REFERENCES Atendimento (Codigo_Atendimento),
+FOREIGN KEY (C_Cliente) REFERENCES Cliente(Cpf_Cliente));
+
+create table Pets (Codigo_Pets int not null, Nome_Pets VARCHAR(10), Tipo_Pets VARCHAR(10), 
+PRIMARY KEY (Codigo_Pets),
+FOREIGN KEY (Codigo_Pets) REFERENCES Pets (Codigo_Pets));					  
+
+ALTER TABLE Cliente 
+add constraint Compra_Produto FOREIGN KEY (C_Produto) REFERENCES Produto(Codigo_Produto);
+
+ALTER TABLE Cliente
+add constraint Cliente_Pets FOREIGN KEY (C_pets) REFERENCES Pets (Codigo_Pets);

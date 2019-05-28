@@ -1,0 +1,53 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package appjava;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Aluno
+ */
+public class EXERCICIO_01_E_02 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("teste");
+
+        String nome = "";
+        int idade = 0;
+        float salario = 0;
+        String nome_mae = "";
+        String valorComando = "";
+
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Digite seu nome: ");
+        nome = entrada.nextLine();
+        System.out.println("Digite sua idade: ");
+        idade = entrada.nextInt();
+        System.out.println("Digite seu salario: ");
+        salario = entrada.nextFloat();
+        System.out.println("Digite o nome da mãe: ");
+        nome_mae = entrada.next();
+        //valorComando = entrada.nextLine();
+        if (idade < 18) {
+            System.out.println("Cliente é menor de idade");
+        } else {
+            System.out.println("Cliente é maior de idade");
+        }
+
+        //if (idade > 18)
+        System.out.println("Seu nome:" + nome);
+        System.out.println("Sua idade:" + idade);
+        System.out.printf("Seu salario: %.2f\n", salario);
+        System.out.println("O nome da sua mae: " + nome_mae);
+        System.out.println("------------------------------");
+    }
+    
+}

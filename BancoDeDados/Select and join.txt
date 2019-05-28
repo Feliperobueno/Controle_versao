@@ -1,0 +1,55 @@
+SELECT pnome, unome
+FROM funcionario
+WHERE salario > ALL (SELECT salario
+					FROM funcionario
+					WHERE dnr=5);
+
+SELECT DISTINCT fcpf
+FROM trabalha_em 
+WHERE(projnumero, horas) in (SELECT projnumero, horas
+					 FROM trabalha_em
+					 WHERE fcpf='12345678966');
+					 
+SELECT DISTINCT projnumero
+FROM projeto
+WHERE projnumero in (SELECT projnumero
+					FROM projeto,
+					departamento,
+					funcionario
+					WHERE dnum=dnumero and
+					 cpf_gerente=cpf
+					and unome='Silva')
+				or projnumero in
+				(SELECT projnumero
+				FROM trabalha_em,
+				funcionario
+				WHERE fcpf=cpf AND
+				unome='Silva');
+
+SELECT f.unome as nome_funcionario,
+		s.unome as nome_supervisor
+FROM funcionario as f, funcionario as s
+WHERE f.cpf_supervisor=s.cpf;
+
+SELECT pnome, unome, endereco
+FROM (funcionario join departamento on dnr=dnumero)
+Where dnome='Pesquisa';
+
+SELECT SUM (salario), MAX (salario), MIN (salario), AVG (salario)
+FROM (funcionario JOIN departamento on dnr=dnumero)
+WHERE dnome='Pesquisa';
+
+SELECT COUNT (*)
+FROM funcionario;
+
+SELECT COUNT (*)
+FROM funcionario, departamento
+WHERE dnr=dnumero AND dnome='Pesquisa';
+
+SELECT dnome
+FROM funcionario, departamento
+WHERE dnr=dnumero
+GROUP BY dnome
+HAVING COUNT(*)>1;
+
+select * from departamento;

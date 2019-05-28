@@ -1,0 +1,44 @@
+create database Empresa;
+create table Funcionario (primeiro_nome VARCHAR(15) not null,
+inicial_nome VARCHAR(15) not null,
+ultimo_nome VARCHAR(15) not null,
+Cpf CHAR(11) not null, DataNasc DATE not null,
+Endereço VARCHAR(30), Sexo CHAR, Salario float,
+Cpf_supervisor CHAR(11), Num_departamento int not null,
+PRIMARY KEY (Cpf),
+FOREIGN KEY (Cpf_supervisor) REFERENCES Funcionario(Cpf));
+
+create table Departamento(Departamento_nome VARCHAR(15) not null,
+Departamento_numero int not null, Cpf_gerente CHAR(11) not null,
+Data_inicio_gerente DATE not null,
+PRIMARY KEY (Departamento_numero),
+FOREIGN KEY (Departamento_numero) REFERENCES Departamento(Departamento_numero));
+
+create table Localizaçoes_departamento (Departamento_numero int not null,
+Local_departamento VARCHAR(30),
+PRIMARY KEY (Departamento_numero, Local_departamento),
+FOREIGN KEY (Departamento_numero) REFERENCES Departamento(Departamento_numero));
+				  
+create table Projeto (Projeto_nome VARCHAR(30) not null, Numero_projeto int not null,
+Local_projeto VARCHAR(30), Departamento_numero int not null,
+PRIMARY KEY (Numero_projeto),
+FOREIGN KEY (Departamento_numero) REFERENCES Departamento(Departamento_numero));
+																								  
+create table Trabalha_em(Funcionario_cpf CHAR(11) not null,
+Numero_projeto int not null, horas TIME, 
+PRIMARY KEY (Funcionario_cpf, Numero_projeto),						 
+FOREIGN KEY (Funcionario_cpf) REFERENCES Funcionario(Cpf),
+FOREIGN KEY (Numero_projeto) REFERENCES Projeto(Numero_projeto));
+												
+create table Dependentes(Funcionario_cpf CHAR(11) not null,
+Nome_dependente VARCHAR(30) not null,
+Sexo CHAR not null, Data_nascimento DATE not null,
+Parentesco VARCHAR(15) not null,
+PRIMARY KEY (Funcionario_cpf, Nome_dependente), 
+FOREIGN KEY (Funcionario_cpf) REFERENCES Funcionario(Cpf));
+
+ALTER TABLE Funcionario 
+add constraint CHAVE_ESTRANGEIRA FOREIGN KEY (Num_departamento) REFERENCES Departamento(Departamento_numero);												 
+
+ALTER TABLE Departamento
+add constraint CPF_GERENTE FOREIGN KEY (Cpf_gerente) REFERENCES Funcionario(Cpf);
